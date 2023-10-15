@@ -1,0 +1,12 @@
+
+module.exports = {
+    name: '',
+    description: '',
+    //devOnly: Boolean,
+    //testOnly: Boolean,
+    //options: Object[],
+
+    callback: (client, interaction) => {
+        //add code here.
+    }
+}

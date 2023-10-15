@@ -1,4 +1,6 @@
-const {Client, IntentsBitField} = require("discord.js")
+require('dotenv').config();
+const {Client, IntentsBitField} = require("discord.js");
+const eventHandler = require('./handlers/eventHandler');
 
 //create an interactable bot
 const client = new Client({
@@ -11,9 +13,7 @@ const client = new Client({
     ],
 });
 
-client.on('ready', (c) =>{
-    console.log("READY!")
-})
+eventHandler(client);
 
 //login the bot
-client.login(TOKEN);
+client.login(process.env.TOKEN);
