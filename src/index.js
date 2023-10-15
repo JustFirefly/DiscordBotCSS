@@ -16,4 +16,4 @@ client.on('ready', (c) =>{
 })
 
 //login the bot
-client.login("MTE2MjkxMzg3NTczODQ5MjkyOA.GFzTv4.ckrTFJWVPOy9w5E8-EDOowZBJq16Y2SfW28fUw");
+client.login(TOKEN);
