@@ -1,5 +1,14 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-
+const roles = [
+    {
+        id:'1162903925419167785',
+        label: 'AI'
+    },
+    {
+        id: '1162905178161283082',
+        label: 'Programming'
+    }
+]
 module.exports = async (client) => {
     console.log("RUNNING MESSGAGE!")
     try {
@@ -21,7 +30,6 @@ module.exports = async (client) => {
 
             }
         )
-        process.exit();
     } catch (error) {
         console.log(`Oh no!\n ${error}`)
     }

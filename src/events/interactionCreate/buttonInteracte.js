@@ -1,27 +1,27 @@
 
 
-module.exports = async (client) =>{
+module.exports = async (client, interaction) =>{
     console.log("RUNNING Button!")
     try {
-            if(!interactions.isButton()) return;
+            if(!interaction.isButton()) return;
 
             await interaction.deferReply({ephemeral: true});
-            const role = client.interaction.guild.roles.cache.get(interaction.customId);
+            const role = interaction.guild.roles.cache.get(interaction.customId);
             if(!role){
-                client.interaction.editReply({
+                interaction.editReply({
                     content: "Couldn't find the role!"
                 })
                 return;
             }
 
-            const hasRole = client.interaction.member.roles.cache.has(role.id);
+            const hasRole = interaction.member.roles.cache.has(role.id);
             if (hasRole){
-                await client.interaction.member.roles.remove(role);
-                await client.interaction.editReply(`The role ${role} has been removed.`);
+                await interaction.member.roles.remove(role);
+                await interaction.editReply(`The role ${role} has been removed.`);
                 return;
             }
-            await client.interaction.member.roles.add(role);
-            await client.interaction.editReply(`The role ${role} has been added.`);
+            await interaction.member.roles.add(role);
+            await interaction.editReply(`The role ${role} has been added.`);
     } catch (error) {
         console.log(error);
     }
