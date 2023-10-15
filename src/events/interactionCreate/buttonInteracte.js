@@ -1,7 +1,6 @@
 
 
 module.exports = async (client, interaction) =>{
-    console.log("RUNNING Button!")
     try {
             if(!interaction.isButton()) return;
 

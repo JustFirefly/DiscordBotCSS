@@ -61,6 +61,7 @@ module.exports = {
     permissionsRequired:[
         PermissionFlagsBits.Administrator
     ],
-    //botPermissions: [PermissionFlagsBits.ManageRoles],
+    
+    botPermissions: [PermissionFlagsBits.ManageRoles,],
 
 }

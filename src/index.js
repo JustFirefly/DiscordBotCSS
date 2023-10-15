@@ -1,7 +1,7 @@
 require('dotenv').config();
 const {Client, IntentsBitField,} = require("discord.js");
-const eventHandler = require('./handlers/eventHandler');
 const mongoose = require('mongoose');
+const eventHandler = require('./handlers/eventHandler');
 //create an interactable bot
 const client = new Client({
     //set of permissions the bot can use
@@ -22,21 +22,11 @@ const roles = [{
     },
     ];
 
+(() => {
+    mongoose.connect('mongodb://127.0.0.1:27017/discordJS');
 
-
-(async () => {
-    console.log("HEY2")
-    try {
-        await mongoose.connect('mongodb://localhost:27017/discordJS', {keepAlive:true });
-        console.log('Connected to DB.');
-        eventHandler(client);
+    eventHandler(client);
     
-    } catch (error) {
-        console.log(error);        
-    }
-})
-
-
-
-//login the bot
-client.login(process.env.TOKEN);
+    //login the bot
+    client.login(process.env.TOKEN);
+})();
