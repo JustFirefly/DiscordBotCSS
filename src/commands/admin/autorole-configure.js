@@ -18,14 +18,10 @@ module.exports = {
         try {
             await interaction.deferReply();
 
-            let autoRole = await AutoRole.findOne({guildId: interaction.guild.id});
+            let autoRole = await AutoRole.findOne({roleId:targetRoleId});
             if(autoRole){
-                if(autoRole.roleId === targetRoleId){
-                    interaction.editReply("Auto Role has been configured for that role! To disable run '/autorole-disable'.");
-                    return;
-                }
-
-                autoRole.roleId = targetRoleId;
+                interaction.editReply("Auto Role has been configured for that role! To disable run '/autorole-disable'.");
+                return;
             } else {
                 autoRole = new AutoRole(
                     {
@@ -33,8 +29,8 @@ module.exports = {
                         roleId: targetRoleId,
                     }
                 );
+                await autoRole.save();
             }
-            await autoRole.save();
             interaction.editReply("AutoRole has now been configured. To disable, run '/autorole-disable'.")
             
 

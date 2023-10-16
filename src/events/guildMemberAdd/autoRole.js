@@ -12,11 +12,13 @@ module.exports = async(client, member) => {
         let guild = member.guild;
         if(!guild) return;
 
-        const autoRole = await AutoRole.findOne({guildId: guild.id});
-
+        const autoRole = await AutoRole.find({guildId: guild.id});
+        
         if(!autoRole) return;
+        for await(const packet of autoRole){
+            await member.roles.add(packet.roleId);
 
-        await member.roles.add(autoRole.roleId);
+        }
     } catch (error) {
         console.log(`Error giving role: \n${error}`)
     }
