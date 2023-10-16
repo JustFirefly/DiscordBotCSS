@@ -5,11 +5,9 @@ const compareCom = require("../../utils/compareCom");
 module.exports = async (client) => {
     try {
         const localCommands = getLocalCommands();
-        console.log(localCommands)
         const applicationCommands = await getApplicationCommands(client, testServer);
         for(const localCommand of localCommands){
             const {name, description, options} = localCommand;
-            console.log(name)
             const existingCommand = await applicationCommands.cache.find(
                 (cmd) => cmd.name === name
             );
@@ -39,7 +37,7 @@ module.exports = async (client) => {
                     options,
                 });
 
-                console.log("REGISTERED NEW COMMAND!");
+                console.log(`REGISTERED ${name}!`);
             }
 
         }

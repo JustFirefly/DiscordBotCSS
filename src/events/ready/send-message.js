@@ -10,7 +10,6 @@ const roles = [
     }
 ]
 module.exports = async (client) => {
-    console.log("RUNNING MESSGAGE!")
     try {
         let channel = client.channels.cache.get('1163009198292992000');
     

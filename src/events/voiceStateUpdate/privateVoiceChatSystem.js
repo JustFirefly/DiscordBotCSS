@@ -1,4 +1,4 @@
-const {Client, VoiceState, BaseGuildVoiceChannel, ChannelType} = require('discord.js');
+const {Client, VoiceState, ChannelType} = require('discord.js');
 const {Collection} = require('discord.js');
 const voiceCollection = new Collection();
 
@@ -17,11 +17,11 @@ module.exports = async (client, oldState, newState) =>{
 
         if(newState.channel?.id === '1163253500495528046'){
             const channel = await newState.guild.channels.create({
-                name: user.tag,
+                name: `${user.displayName}'s Voice Chat`,
                 type: ChannelType.GuildVoice,
                 parent: newState.channel.parent,
             });
-            
+
             member.voice.setChannel(channel);
             voiceCollection.set(user.id, channel.id);
 
