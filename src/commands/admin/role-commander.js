@@ -1,7 +1,7 @@
 const {Client, Interaction, Collection} = require('discord.js');
 
 const roles = [
-   '1162906468404703303', '1162904105115717735'
+   '1163416162844016650', '1163328751967404094', '1163329007698325524', '1163416099526803569'
 ]
 let guildMembers = new Collection();
 /**
@@ -12,9 +12,11 @@ let guildMembers = new Collection();
 module.exports = {
     
     callback: async(client, interaction) => {
-        await interaction.deferReply();
-        guildMembers = interaction.guild.members.cache;
+        //await interaction.deferReply();
+        guildMembers = await interaction.guild.members.fetch();
+        console.log(interaction.guild.name);
         guildMembers.each(m => {
+            console.log(m.user.displayName);
             m.roles.add(roles);
         });
 

@@ -13,15 +13,6 @@ const client = new Client({
         IntentsBitField.Flags.GuildVoiceStates,
     ],
 });
-const roles = [{
-        id:'1162903925419167785',
-        label:'AI',
-    },
-    {
-        id:'1162905178161283082',
-        label:'Programming',
-    },
-    ];
 
 (() => {
     mongoose.connect('mongodb://127.0.0.1:27017/discordJS');

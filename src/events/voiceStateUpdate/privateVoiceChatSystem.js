@@ -15,7 +15,7 @@ module.exports = async (client, oldState, newState) =>{
         const member = newState.member
         const user = member.user;
 
-        if(newState.channel?.id === '1163253500495528046'){
+        if(newState.channel?.id === '1163416744136810506'){
             const channel = await newState.guild.channels.create({
                 name: `${user.displayName}'s Voice Chat`,
                 type: ChannelType.GuildVoice,
